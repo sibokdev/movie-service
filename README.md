@@ -16,3 +16,16 @@ It's a movie catalog service to manage all crud operations.
 | `/movies/{eidr}/vote` |  `PUT`   |           |  200   |   Movie    | Votes a movie up,down or as favorite.      |
 |                       |          |           |  200   |   Movie    | Create a Movie with the given EIDR.        |
 |   `/movies/{eidr}`    | `DELETE` |           |  204   |            | Delete the Movie with the given EIDR.      |
+
+
+## Local Development DB
+More easy way to get the DB up and running is to create and start a docker container with next command:
+```
+docker run -d --name movies-postgres -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=moviesdb_catalog -p 5432:5432 postgres:14.4
+```
+
+If you cant run a docker container please install a local postgres DB with next credentials:
+user: user
+password: password
+db: moviesdb_catalog
+
