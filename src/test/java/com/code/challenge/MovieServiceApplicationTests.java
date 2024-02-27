@@ -15,7 +15,7 @@ class CatalogServiceApplicationTests {
     private WebTestClient webTestClient;
     @Test
     void whenGetRequestWithIdThenMovieReturned() {
-        var movieEidr = "1231231230";
+        var movieEidr = "2231281739";
         var movieToCreate = Movie.of(movieEidr, "Rambo 999",
                 "Ted Kotcheff", 1982,"studiocanal",
                 "In the film, Rambo is a troubled ...",
@@ -42,7 +42,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     void whenPostRequestThenMovieCreated() {
-        var expectedMovie = Movie.of("1231231231", "Rambo 999",
+        var expectedMovie = Movie.of("2231281238", "Rambo 999",
                 "Ted Kotcheff", 1982,"studiocanal",
                 "In the film, Rambo is a troubled ...",
                 "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bGIDYYOX7Cj1o7W8JiwHd3TzJVw.jpg");
@@ -61,7 +61,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     void whenPutRequestThenMovieUpdated() {
-        var movieEidr = "1231231232";
+        var movieEidr = "2231836283";
         var movieToCreate = Movie.of(movieEidr, "Rambo 999",
                 "Ted Kotcheff", 1982,"studiocanal",
                 "In the film, Rambo is a troubled ...",
@@ -94,7 +94,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     void whenDeleteRequestThenMovieDeleted() {
-        var movieEidr = "1231231233";
+        var movieEidr = "2241231893";
         var movieToCreate = Movie.of(movieEidr, "Rambo 999",
                 "Ted Kotcheff", 1982,"studiocanal",
                 "In the film, Rambo is a troubled ...",

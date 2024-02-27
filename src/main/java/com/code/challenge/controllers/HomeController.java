@@ -1,6 +1,7 @@
 package com.code.challenge.controllers;
 
 import com.code.challenge.config.CustomProperties;
+import com.code.challenge.config.Generated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ public class HomeController {
     public HomeController(CustomProperties customProperties){
         this.customProperties = customProperties;
     }
+    @Generated
     @GetMapping("/")
     public String getGreeting() {
         return customProperties.getGreeting();

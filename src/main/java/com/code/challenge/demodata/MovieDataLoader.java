@@ -1,6 +1,7 @@
 package com.code.challenge.demodata;
 
 
+import com.code.challenge.config.Generated;
 import com.code.challenge.domain.Movie;
 import com.code.challenge.repository.MovieRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Generated
 @Component
 @Profile("testdata")
 public class MovieDataLoader {
