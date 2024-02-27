@@ -20,4 +20,7 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     void deleteByEidr(String eidr);
     @Query("select m.title, m.release_year from Movie m group by m.release_year, m.title ")
     List<MovieGroupedByYear> getMoviesGroupedByYear();
+
+    @Query("select m.* from Movie m order by favorite_count desc")
+    List<Movie> getMoviesSorted();
 }

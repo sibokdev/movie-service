@@ -5,6 +5,7 @@ import com.code.challenge.domain.MovieAlreadyExistsException;
 import com.code.challenge.domain.MovieGroupedByYear;
 import com.code.challenge.domain.MovieNotFoundException;
 import com.code.challenge.repository.MovieRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,8 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public Iterable<Movie> viewMovieList(){
-        return movieRepository.findAll();
+    public List<Movie> viewMovieList(){
+        return movieRepository.getMoviesSorted();
     }
 
     public List<MovieGroupedByYear> viewMoviesGrouped(){
