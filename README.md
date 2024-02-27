@@ -20,6 +20,7 @@ It's a movie catalog service to manage all crud operations.
 |                       |          |           |  200   |   Movie    | Create a Movie with the given EIDR.                          |
 |   `/movies/{eidr}`    | `DELETE` |           |  204   |            | Delete the Movie with the given EIDR.                        |
 
+On root folder you will find the postman exported collection MoviesChallengeCollection.postman_collection.json
 
 ## Local Development DB
 More easy way to get the DB up and running is to create and start a docker container with next command:
