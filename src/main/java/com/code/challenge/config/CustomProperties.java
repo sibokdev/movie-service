@@ -2,6 +2,7 @@ package com.code.challenge.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+@Generated
 @ConfigurationProperties(prefix = "movies")
 public class CustomProperties {
     private String greeting;

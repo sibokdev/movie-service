@@ -1,10 +1,14 @@
 package com.code.challenge.controllers;
 
 import com.code.challenge.domain.Movie;
+import com.code.challenge.domain.MovieGroupedByYear;
+import com.code.challenge.domain.dto.VoteDTO;
 import com.code.challenge.services.MovieService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("movies")
@@ -16,8 +20,18 @@ public class MovieController {
     }
 
     @GetMapping
-    public Iterable<Movie> get() {
+    public Iterable<Movie> getAllMovies() {
         return movieService.viewMovieList();
+    }
+
+    @GetMapping("/years")
+    public List<MovieGroupedByYear> getMoviesGroupedByReleaseYear() {
+        return movieService.viewMoviesGrouped();
+    }
+
+    @GetMapping("years/{releaseYear}")
+    public List<Movie> getMoviesByReleaseYear(@PathVariable Integer releaseYear) {
+        return movieService.viewMoviesByReleaseYear(releaseYear);
     }
 
     @GetMapping("{eidr}")
@@ -43,7 +57,7 @@ public class MovieController {
     }
 
     @PutMapping("{eidr}/vote")
-    public Movie voteMovie(@PathVariable String eidr, @Valid @RequestBody Movie movie) {
-        return movieService.editMovieDetails(eidr, movie);
+    public Movie voteMovie(@PathVariable String eidr, @RequestBody VoteDTO voteDTO) {
+        return movieService.vote(eidr, voteDTO);
     }
 }

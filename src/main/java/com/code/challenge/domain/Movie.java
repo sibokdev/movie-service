@@ -46,4 +46,7 @@ public record Movie(
     public static Movie of(String eidr, String title, String director, Integer releaseYear, String publisher, String sinopsis, String imageURL) {
         return new Movie(null, eidr, title, director, releaseYear, publisher, sinopsis, imageURL,0,0, 0, null, null, 0);
     }
+    public static Movie of(String eidr, String title, String director, Integer releaseYear, String publisher, String sinopsis, String imageURL, Integer upVoteCount, Integer downVoteCount, Integer favoriteCount) {
+            return new Movie(null, eidr, title, director, releaseYear, publisher, sinopsis, imageURL,upVoteCount,downVoteCount, favoriteCount, null, null, 0);
+    }
 }

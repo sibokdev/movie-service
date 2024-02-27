@@ -1,10 +1,11 @@
 package com.code.challenge.services;
 
-import com.code.challenge.domain.Movie;
-import com.code.challenge.domain.MovieAlreadyExistsException;
-import com.code.challenge.domain.MovieNotFoundException;
+import com.code.challenge.domain.*;
+import com.code.challenge.domain.dto.VoteDTO;
 import com.code.challenge.repository.MovieRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -14,8 +15,16 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public Iterable<Movie> viewMovieList(){
-        return movieRepository.findAll();
+    public List<Movie> viewMovieList(){
+        return movieRepository.getMoviesSorted();
+    }
+
+    public List<MovieGroupedByYear> viewMoviesGrouped(){
+        return movieRepository.getMoviesGroupedByYear();
+    }
+
+    public List<Movie> viewMoviesByReleaseYear(Integer releaseYear){
+        return movieRepository.findByReleaseYear(releaseYear);
     }
 
     public Movie viewMovieDetails(String eidr) {
@@ -56,4 +65,38 @@ public class MovieService {
                 })
                 .orElseGet(() -> addMovieToCatalog(movie));
     }
+
+    public Movie vote(String eidr, VoteDTO voteDTO) {
+        return movieRepository.findByEidr(eidr)
+                .map(existingMovie -> {
+                    int upCount = 0, downCount = 0, favoriteCount = 0;
+
+                    switch (voteDTO.voteType()) {
+                        case "UP" -> {
+                            upCount = existingMovie.upVoteCount() + 1;
+                        }
+                        case "DOWN" -> {
+                            downCount = existingMovie.downVoteCount() + 1;
+                        }
+                        case "FAVORITE" -> favoriteCount = existingMovie.favoriteCount() + 1;
+                    }
+
+                    var movieToUpdate = new Movie(
+                            existingMovie.id(),
+                            existingMovie.eidr(),
+                            existingMovie.title(),
+                            existingMovie.director(),
+                            existingMovie.releaseYear(),
+                            existingMovie.publisher(),
+                            existingMovie.sinopsis(),
+                            existingMovie.imageURl(),
+                            upCount,
+                            downCount,
+                            favoriteCount,
+                            existingMovie.createdDate(),
+                            existingMovie.lastModifiedDate(),
+                            existingMovie.version());
+                    return movieRepository.save(movieToUpdate);
+                }).orElse(null);
     }
+}
