@@ -209,4 +209,55 @@ class MovieServiceApplicationTests {
                     assertThat(actualMovie.favoriteCount()).isEqualTo(createdMovie.favoriteCount() + 1);
                 });
     }
+
+    @Test
+    void getAllMoviesList() {
+        webTestClient
+                .get()
+                .uri("/movies")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Movie.class).value(moviesList -> {
+                    assertThat(moviesList).isNotNull();
+                });
+    }
+
+    @Test
+    void getAllMoviesListGroupedBy() {
+        webTestClient
+                .get()
+                .uri("/movies/years")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Movie.class).value(moviesList -> {
+                    assertThat(moviesList).isNotNull();
+                });
+    }
+
+    @Test
+    void getAllMoviesByReleaseYear() {
+        var movieEidr = "2931836288";
+        var releaseYear = 2000;
+        var movieToCreate = Movie.of(movieEidr, "Rambo 2000",
+                "Ted Kotcheff", releaseYear,"studiocanal",
+                "In the film, Rambo is a troubled ...",
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bGIDYYOX7Cj1o7W8JiwHd3TzJVw.jpg");
+        Movie createdMovie = webTestClient
+                .post()
+                .uri("/movies")
+                .bodyValue(movieToCreate)
+                .exchange()
+                .expectStatus().isCreated()
+                .expectBody(Movie.class).value(movie -> assertThat(movie).isNotNull())
+                .returnResult().getResponseBody();
+        webTestClient
+                .get()
+                .uri("/movies/years/"+releaseYear)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Movie.class).value(moviesList -> {
+                    assertThat(moviesList).isNotNull();
+                    assertThat(moviesList.size()).isEqualTo(1);
+                });
+    }
 }

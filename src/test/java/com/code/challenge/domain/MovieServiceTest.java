@@ -42,5 +42,4 @@ class MovieServiceTest {
                 .isInstanceOf(MovieNotFoundException.class)
                 .hasMessage("The movie with EIDR " + movieEidr + " was not found.");
     }
-
 }

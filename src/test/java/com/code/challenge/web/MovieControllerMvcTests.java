@@ -26,6 +26,5 @@ class MovieControllerMvcTests {
                 .perform(get("/movies/" + eidr))
                 .andExpect(status().isNotFound());
     }
-
 }
 

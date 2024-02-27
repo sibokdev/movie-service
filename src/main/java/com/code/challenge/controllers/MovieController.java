@@ -20,17 +20,17 @@ public class MovieController {
     }
 
     @GetMapping
-    public Iterable<Movie> get() {
+    public Iterable<Movie> getAllMovies() {
         return movieService.viewMovieList();
     }
 
     @GetMapping("/years")
-    public List<MovieGroupedByYear> getTest() {
+    public List<MovieGroupedByYear> getMoviesGroupedByReleaseYear() {
         return movieService.viewMoviesGrouped();
     }
 
     @GetMapping("years/{releaseYear}")
-    public List<Movie> getTest2(@PathVariable Integer releaseYear) {
+    public List<Movie> getMoviesByReleaseYear(@PathVariable Integer releaseYear) {
         return movieService.viewMoviesByReleaseYear(releaseYear);
     }
 
