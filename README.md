@@ -34,3 +34,9 @@ To execute test just build the project with gradle wrapper
 ```
 ./gradlew clean build
 ```
+
+The project is configured to run code coverage report, you can find the generated report on 
+```
+/build/reports/jacoco/test/html/index.html
+```
+Please check the API docs on http://localhost:9001/swagger-ui/index.html
