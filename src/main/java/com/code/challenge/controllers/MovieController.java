@@ -1,10 +1,13 @@
 package com.code.challenge.controllers;
 
 import com.code.challenge.domain.Movie;
+import com.code.challenge.domain.MovieGroupedByYear;
 import com.code.challenge.services.MovieService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("movies")
@@ -18,6 +21,16 @@ public class MovieController {
     @GetMapping
     public Iterable<Movie> get() {
         return movieService.viewMovieList();
+    }
+
+    @GetMapping("/years")
+    public List<MovieGroupedByYear> getTest() {
+        return movieService.viewMoviesGrouped();
+    }
+
+    @GetMapping("years/{releaseYear}")
+    public List<Movie> getTest2(@PathVariable Integer releaseYear) {
+        return movieService.viewMoviesByReleaseYear(releaseYear);
     }
 
     @GetMapping("{eidr}")

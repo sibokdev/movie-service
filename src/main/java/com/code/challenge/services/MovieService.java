@@ -2,9 +2,12 @@ package com.code.challenge.services;
 
 import com.code.challenge.domain.Movie;
 import com.code.challenge.domain.MovieAlreadyExistsException;
+import com.code.challenge.domain.MovieGroupedByYear;
 import com.code.challenge.domain.MovieNotFoundException;
 import com.code.challenge.repository.MovieRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -16,6 +19,14 @@ public class MovieService {
 
     public Iterable<Movie> viewMovieList(){
         return movieRepository.findAll();
+    }
+
+    public List<MovieGroupedByYear> viewMoviesGrouped(){
+        return movieRepository.getMoviesGroupedByYear();
+    }
+
+    public List<Movie> viewMoviesByReleaseYear(Integer releaseYear){
+        return movieRepository.findByReleaseYear(releaseYear);
     }
 
     public Movie viewMovieDetails(String eidr) {
