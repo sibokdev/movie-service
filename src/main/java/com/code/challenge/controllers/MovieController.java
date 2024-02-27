@@ -41,4 +41,9 @@ public class MovieController {
     public Movie put(@PathVariable String eidr, @Valid @RequestBody Movie movie) {
         return movieService.editMovieDetails(eidr, movie);
     }
+
+    @PutMapping("{eidr}/vote")
+    public Movie voteMovie(@PathVariable String eidr, @Valid @RequestBody Movie movie) {
+        return movieService.editMovieDetails(eidr, movie);
+    }
 }
