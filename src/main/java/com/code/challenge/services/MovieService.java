@@ -14,11 +14,11 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public Iterable<Movie> viewMoviesList(){
+    public Iterable<Movie> viewMovieList(){
         return movieRepository.findAll();
     }
 
-    public Movie viewBookDetails(String eidr) {
+    public Movie viewMovieDetails(String eidr) {
         return movieRepository.findByEidr(eidr)
                 .orElseThrow(() -> new MovieNotFoundException(eidr));
     }
