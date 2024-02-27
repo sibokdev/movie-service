@@ -39,4 +39,5 @@ The project is configured to run code coverage report, you can find the generate
 ```
 /build/reports/jacoco/test/html/index.html
 ```
-Please check the API docs on http://localhost:9001/swagger-ui/index.html
+If you want to access the documentation, after run the app, please check the API docs on:
+http://localhost:9001/swagger-ui/index.html
