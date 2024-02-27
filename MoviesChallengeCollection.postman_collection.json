@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "d59c22c0-96e2-4c9b-9196-33427001f0d6",
+		"name": "MoviesChallengeCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6931888"
+	},
+	"item": [
+		{
+			"name": "getAllMoviesSortedByFavoriteDesc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9001/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllMoviesGroupedByReleaseYear",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9001/movies/years",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies",
+						"years"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllMoviesByReleaseYear",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9001/movies/years",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies",
+						"years"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDetailsByMovieEIDR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9001/movies/1234567891",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies",
+						"1234567891"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createMovie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eidr\": \"1234567893\",\r\n    \"title\": \"Rambo 2\",\r\n    \"director\": \"Ted Kotcheff\",\r\n    \"releaseYear\": 1982,\r\n    \"publisher\": \"studiocanal\",\r\n    \"sinopsis\": \"Rambo sequel more action\",\r\n    \"imageURl\": \"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bGIDYYOX7Cj1o7W8JiwHd3TzJVw.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "healthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9001/",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voteMovieUp",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"voteType\":\"UP\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/movies/1234567891/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies",
+						"1234567891",
+						"vote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voteMovieUpDown",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"voteType\":\"DOWN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/movies/1234567891/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies",
+						"1234567891",
+						"vote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voteAsFavorite",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"voteType\":\"FAVORITE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/movies/1234567891/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"movies",
+						"1234567891",
+						"vote"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
