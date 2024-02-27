@@ -59,4 +59,4 @@ The action will generate the docker image and upload it to github packages regis
 Also will execute tests and analysis with grype to create a vulnerability report on the application libraries and also for the container.
 All of this will happen on the commit stage to main branch.
 
-
+t
