@@ -13,7 +13,7 @@ It's a movie catalog service to manage all crud operations.
 |   `/movies/{eidr}`    |  `GET`   |           |  200   |   Movie    | Get the Movie with the given EIDR.         |
 |                       |          |           |  404   |            | No Movie with the given EIDR exists.       |
 |   `/movies/{eidr}`    |  `PUT`   |   Movie   |  200   |   Movie    | Update the Movie with the given EIDR.      |
-| `/movies/{eidr}/vote` |  `PUT`   |           |  200   |   Movie    | Votes a movie up,down or as favorite.      |
+| `/movies/{eidr}/voteDTO` |  `PUT`   |           |  200   |   Movie    | Votes a movie up,down or as favorite.      |
 |                       |          |           |  200   |   Movie    | Create a Movie with the given EIDR.        |
 |   `/movies/{eidr}`    | `DELETE` |           |  204   |            | Delete the Movie with the given EIDR.      |
 

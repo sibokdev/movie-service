@@ -1,7 +1,7 @@
 package com.code.challenge.services;
 
 import com.code.challenge.domain.*;
-import com.code.challenge.domain.dto.Vote;
+import com.code.challenge.domain.dto.VoteDTO;
 import com.code.challenge.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
@@ -66,12 +66,12 @@ public class MovieService {
                 .orElseGet(() -> addMovieToCatalog(movie));
     }
 
-    public Movie vote(String eidr, Vote vote) {
+    public Movie vote(String eidr, VoteDTO voteDTO) {
         return movieRepository.findByEidr(eidr)
                 .map(existingMovie -> {
                     int upCount = 0, downCount = 0, favoriteCount = 0;
 
-                    switch (vote.voteType()) {
+                    switch (voteDTO.voteType()) {
                         case "UP" -> {
                             upCount = existingMovie.upVoteCount() + 1;
                         }
