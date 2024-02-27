@@ -2,6 +2,7 @@ package com.code.challenge.controllers;
 
 import com.code.challenge.domain.Movie;
 import com.code.challenge.domain.MovieGroupedByYear;
+import com.code.challenge.domain.dto.Vote;
 import com.code.challenge.services.MovieService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -56,7 +57,7 @@ public class MovieController {
     }
 
     @PutMapping("{eidr}/vote")
-    public Movie voteMovie(@PathVariable String eidr, @Valid @RequestBody Movie movie) {
-        return movieService.editMovieDetails(eidr, movie);
+    public Movie voteMovie(@PathVariable String eidr, @RequestBody Vote vote) {
+        return movieService.vote(eidr, vote);
     }
 }
