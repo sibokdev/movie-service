@@ -19,23 +19,23 @@ public class MovieService {
     }
 
     public Movie viewBookDetails(String eidr) {
-        return movieRepository.findByEIDR(eidr)
+        return movieRepository.findByEidr(eidr)
                 .orElseThrow(() -> new MovieNotFoundException(eidr));
     }
 
     public Movie addMovieToCatalog(Movie movie) {
-        if (movieRepository.existsByEIDR(movie.eidr())) {
+        if (movieRepository.existsByEidr(movie.eidr())) {
             throw new MovieAlreadyExistsException(movie.eidr());
         }
         return movieRepository.save(movie);
     }
 
     public void removeMovieFromCatalog(String eidr) {
-        movieRepository.deleteByEIDR(eidr);
+        movieRepository.deleteByEidr(eidr);
     }
 
     public Movie editMovieDetails(String eidr, Movie movie) {
-        return movieRepository.findByEIDR(eidr)
+        return movieRepository.findByEidr(eidr)
                 .map(existingMovie -> {
                     var movieToUpdate = new Movie(
                             existingMovie.id(),
