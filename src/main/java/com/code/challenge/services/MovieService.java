@@ -56,4 +56,4 @@ public class MovieService {
                 })
                 .orElseGet(() -> addMovieToCatalog(movie));
     }
-}
+    }
