@@ -29,7 +29,7 @@ user: user
 password: password
 db: moviesdb_catalog
 
-Runing tests
+## Running tests
 To execute test just build the project with gradle wrapper
 ```
 ./gradlew clean build
@@ -41,3 +41,22 @@ The project is configured to run code coverage report, you can find the generate
 ```
 If you want to access the documentation, after run the app, please check the API docs on:
 http://localhost:9001/swagger-ui/index.html
+
+## Dockerizing the application 
+At the root folder there is a Dockerfile to create the docker image of the microservice, once you are sure that your project test passed
+build the jar
+```
+./gradlew bootjar
+```
+Next you need to build the image, please execute at the root folder:
+```
+docker build -t movie-service .
+```
+## GitHub Action
+Added a github action under /.github/workflows/commit-stage.yml
+
+The action will generate the docker image and upload it to github packages registry, link the package to the source code.
+Also will execute tests and analysis with grype to create a vulnerability report on the application libraries and also for the container.
+All of this will happen on the commit stage to main branch.
+
+
