@@ -29,3 +29,8 @@ user: user
 password: password
 db: moviesdb_catalog
 
+Runing tests
+To execute test just build the project with gradle wrapper
+```
+./gradlew clean build
+```
