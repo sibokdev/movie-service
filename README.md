@@ -5,17 +5,20 @@ It's a movie catalog service to manage all crud operations.
 
 ## REST API
 
-|       Endpoint	       |  Method  | Req. body | Status | Resp. body | Description    		   	                      |
-|:---------------------:|:--------:|:---------:|:------:|:----------:|:-------------------------------------------|
-|       `/movies`       |  `GET`   |           |  200   |  Movie[]   | Get all the movies in the catalog.         |
-|       `/movies`       |  `POST`  |   Movie   |  201   |   Movie    | Add a new movie to the catalog.            |
-|                       |          |           |  422   |            | A Movie with the same EIDR already exists. |
-|   `/movies/{eidr}`    |  `GET`   |           |  200   |   Movie    | Get the Movie with the given EIDR.         |
-|                       |          |           |  404   |            | No Movie with the given EIDR exists.       |
-|   `/movies/{eidr}`    |  `PUT`   |   Movie   |  200   |   Movie    | Update the Movie with the given EIDR.      |
-| `/movies/{eidr}/voteDTO` |  `PUT`   |           |  200   |   Movie    | Votes a movie up,down or as favorite.      |
-|                       |          |           |  200   |   Movie    | Create a Movie with the given EIDR.        |
-|   `/movies/{eidr}`    | `DELETE` |           |  204   |            | Delete the Movie with the given EIDR.      |
+|       Endpoint	       |  Method  | Req. body | Status | Resp. body | Description    		   	                                        |
+|:---------------------:|:--------:|:---------:|:------:|:----------:|:-------------------------------------------------------------|
+|          `/`          |  `GET`   |           |  200   |   String   | Returns a message to check server upd and running            |
+|       `/movies`       |  `GET`   |           |  200   |  Movie[]   | Get all the movies in the catalog, sorted by favorite count. |
+|       `/movies`       |  `POST`  |   Movie   |  201   |   Movie    | Add a new movie to the catalog.                              |
+|                       |          |           |  422   |            | A Movie with the same EIDR already exists.                   |
+|   `/movies/{eidr}`    |  `GET`   |           |  200   |   Movie    | Get the Movie with the given EIDR.                           |
+|                       |          |           |  404   |            | No Movie with the given EIDR exists.                         |
+|   `/movies/{eidr}`    |  `PUT`   |   Movie   |  200   |   Movie    | Update the Movie with the given EIDR.                        |
+|    `/movies/years`    |  `GET`   |           |  200   |  Movie[]   | Return list of movies grouped by release year.               |
+| `/movies/years/{releaseYear}` |  `GET`   |           |  200   |  Movie[]   | get list of movies by release year.                          |
+| `/movies/{eidr}/vote` |  `PUT`   |           |  200   |   Movie    | Votes a movie up,down or as favorite.                        |
+|                       |          |           |  200   |   Movie    | Create a Movie with the given EIDR.                          |
+|   `/movies/{eidr}`    | `DELETE` |           |  204   |            | Delete the Movie with the given EIDR.                        |
 
 
 ## Local Development DB
@@ -30,7 +33,7 @@ password: password
 db: moviesdb_catalog
 
 ## Running tests
-To execute test just build the project with gradle wrapper
+To execute test just build the project with gradle wrapper, if first time fail please give a second try.
 ```
 ./gradlew clean build
 ```
@@ -59,4 +62,8 @@ The action will generate the docker image and upload it to github packages regis
 Also will execute tests and analysis with grype to create a vulnerability report on the application libraries and also for the container.
 All of this will happen on the commit stage to main branch.
 
-t
+You can see the result of the github actions on the repository:
+https://github.com/sibokdev/movie-service
+
+For the vulnerability report please visit:
+https://github.com/sibokdev/movie-service/security/code-scanning
