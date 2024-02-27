@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface MovieRepository extends CrudRepository<Movie,Long> {
-    Optional<Movie> findByIEDR(String iedr);
-    boolean existsByIEDR(String iedr);
+    Optional<Movie> findByEIDR(String eidr);
+    boolean existsByEIDR(String iedr);
     @Modifying
     @Transactional
-    @Query("delete from Movie where iedr = :iedr")
-    void deleteByIsbn(String iedr);
+    @Query("delete from Movie where eidr = :eidr")
+    void deleteByEIDR(String eidr);
 }
