@@ -1,9 +1,6 @@
 package com.code.challenge.domain;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -27,13 +24,12 @@ public record Movie(
         String title,
         @NotBlank(message = "The Movie Director must be defined.")
         String director,
-        @NotNull(message = "The Movie year must be defined.")
-        @Pattern(
-                regexp = "^([0-9][0-9]{3})$",
-                message = "The year format must be valid."
-        )
+        @NotNull(message = "The Movie release year must be defined.")
+        @Min(1000)@Max(9999)
         Integer releaseYear,
+        @NotBlank(message = "The Movie Publisher must be defined.")
         String publisher,
+        @NotBlank(message = "The Movie Sinopsis must be defined.")
         String sinopsis,
         String imageURl,
         Integer upVoteCount,
